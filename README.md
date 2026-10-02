@@ -31,29 +31,97 @@ Karena seluruh citra ijazah asli yang digunakan memiliki tanda tangan, citra tan
 
 ---
 
-## Struktur Folder
+## How to Run
 
-```text
-signature-detection/
-│
-├── main.py
-├── README.md
-├── requirements.txt
-│
-├── citra/
-│   ├── 01_HighQuality_Enhanced.jpg
-│   ├── 02_LowContrast.jpg
-│   ├── 03_Blurred.jpg
-│   ├── 04_HighNoise.jpg
-│   ├── 05_LowResolution_Upsampled.jpg
-│   ├── 06_Faded_Underexposed.jpg
-│   ├── 07_ColorShift_WarmTint.jpg
-│   ├── 08_JPEGCompression_Artifacts.jpg
-│   └── 09_CombinedDegradation.jpg
-│
-└── hasil/
-    ├── ada_ttd/
-    ├── tanpa_ttd/
-    ├── perbandingan/
-    ├── hasil_threshold.csv
-    └── hasil_pengujian.csv
+### 1. Clone Repository
+Buka Command Prompt atau PowerShell, kemudian jalankan:
+```bash
+git clone https://github.com/streturn/Tugas6PCD_F1G124051.git
+```
+
+Kemudian masuk ke folder project:
+```bash
+cd Tugas6PCD_F1G124051
+```
+
+### 2. Install Library
+Install library yang diperlukan dengan perintah:
+```bash
+pip install opencv-python numpy matplotlib
+```
+
+### 3. Jalankan Program
+Jalankan program dengan:
+```bash
+python main.py
+```
+
+---
+
+## Hasil Pengolahan
+
+Program melakukan beberapa tahap pengolahan:
+* Grayscale
+* Global Thresholding
+* Otsu Thresholding
+* Opening
+* Closing
+
+Hasil pengolahan disimpan pada folder:
+`hasil/`
+
+---
+
+## Metode yang Digunakan
+
+* **Global Thresholding**  
+  Global threshold digunakan untuk memisahkan foreground dan background menggunakan nilai ambang tertentu. Pada program ini digunakan nilai threshold 127.
+
+* **Otsu Thresholding**  
+  Metode Otsu menentukan nilai threshold secara otomatis berdasarkan distribusi intensitas citra.
+
+* **Opening**  
+  Opening digunakan untuk mengurangi noise kecil pada hasil thresholding.
+
+* **Closing**  
+  Closing digunakan untuk membantu menghubungkan bagian foreground yang terputus dan mengisi celah kecil.
+
+---
+
+## Output
+
+Output program berupa:
+* Citra hasil crop
+* Citra grayscale
+* Hasil Global Thresholding
+* Hasil Otsu Thresholding
+* Hasil Opening
+* Hasil Closing
+* Jumlah foreground pixel
+* Status keputusan (SIGNATURE PRESENT / SIGNATURE ABSENT)
+* File `rekapitulasi_hasil.csv`
+
+---
+
+## Dataset
+
+Dataset yang digunakan terdiri dari beberapa citra dokumen ijazah dengan kondisi kualitas citra yang berbeda.  
+Contohnya:
+* High Quality
+* Low Contrast
+* Blurred
+* High Noise
+* Low Resolution
+* Faded / Underexposed
+* Color Shift
+* JPEG Compression
+* Combined Degradation
+
+---
+
+## Author
+
+* **Nama:** St. Rahmy
+* **NIM:** F1G124051
+* **Mata Kuliah:** Pengolahan Citra Digital
+* **Universitas:** Universitas Halu Oleo
